@@ -107,7 +107,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(80),
-            color: const Color.fromARGB(207, 206, 83, 240),
+            color: const Color(0xFF3e18fc),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Row(
@@ -159,9 +159,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFffffff),
       appBar: AppBar(
-        backgroundColor: Colors.purpleAccent[700],
+        backgroundColor: Color(0xFF3e18fc),
         title: Text(
-          widget.userName,
+          "Amigo",
           style: GoogleFonts.poppins(
               textStyle: const TextStyle(
             color: Color.fromARGB(255, 248, 248, 248),

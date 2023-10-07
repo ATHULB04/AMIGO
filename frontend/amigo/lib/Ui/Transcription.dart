@@ -9,7 +9,7 @@ class TranscriptionPage extends StatefulWidget {
 }
 
 class _TranscriptionPageState extends State<TranscriptionPage> {
-   final DatabaseReference databaseReference =
+  final DatabaseReference databaseReference =
       FirebaseDatabase.instance.ref().child('teacher');
   @override
   Widget build(BuildContext context) {
@@ -22,31 +22,32 @@ class _TranscriptionPageState extends State<TranscriptionPage> {
             clipper: MyCustomClipper(),
             child: Container(
               color:
-                  const Color(0xFFBE03FD), // Set the container color to white
+                  const Color(0xFF3e18fc), // Set the container color to white
             ),
           ),
           StreamBuilder(
-            stream: databaseReference.onValue,
-            builder: (context, snapshot) {
-              return  Padding(
-                padding: const EdgeInsets.only(top: 100.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Center(
-                    child: Text(
-                      snapshot.hasData ? snapshot.data!.snapshot.value.toString() : "no live happening",
-                      style: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Color.fromARGB(255, 243, 239, 239),
+              stream: databaseReference.onValue,
+              builder: (context, snapshot) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 100.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Center(
+                      child: Text(
+                        snapshot.hasData
+                            ? snapshot.data!.snapshot.value.toString()
+                            : "no live happening",
+                        style: const TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color.fromARGB(255, 243, 239, 239),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }
-          ),
+                );
+              }),
         ],
       ),
     );
