@@ -6,6 +6,7 @@ import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import { getDatabase, ref, set } from "firebase/database";
 import db from '../firebase';
+import axios from 'axios';
 
 const Minutespage = () => {
   const [listening, setListening] = useState(false);
@@ -36,17 +37,32 @@ const Minutespage = () => {
     SpeechRecognition.startListening();
   };
 
+  const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+  const API_URL = 'https://ihrd1-production.up.railway.app/summary';
+
+
   const handleStopListening = async () => {
     setListening(false);
     // Add a new document to the "Meeting summary" collection with auto-generated ID
+   
+    SpeechRecognition.stopListening();
+  };
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     try {
-      const physicsDocRef = doc(db, 'Notes', 'Physics');
+      const physicsDocRef = doc(db, 'Notes', 'English');
       // Data to be updated
+
       const dataToUpdate = {
         transcribe: transcript,
       };
       await updateDoc(physicsDocRef, dataToUpdate);
       console.log('Document added successfully with ID: ');
+      const response = await axios.post(`${CORS_PROXY}${API_URL}`, {
+        subject: "English",
+      });
+      
+      console.log('Server Response:', response.data);
     } catch (error) {
       console.error('Error adding document: ', error);
     }
@@ -55,21 +71,6 @@ const Minutespage = () => {
       'Successfully summarized!',
       'success'
     )
-    SpeechRecognition.stopListening();
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-
-    // Get today's date
-    const today = new Date().toISOString().split('T')[0]; // Format: "YYYY-MM-DD"
-
-    // Define the data you want to store, including the "transcript" field
-    const data = {
-      transcript: transcript, // This is the "transcript" field
-    };
-
-
   };
 
   return (
