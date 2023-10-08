@@ -1,0 +1,57 @@
+{
+  "name": "alloca",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@material-tailwind/react": "^2.1.0",
+    "@nextui-org/react": "^2.0.24",
+    "@types/node": "20.5.1",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "axios": "^1.4.0",
+    "cors-anywhere": "^0.4.4",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19",
+    "firebase": "^10.2.0",
+    "next": "13.4.19",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.1.1",
+    "react-icons": "^4.10.1",
+    "react-speech-recognition": "^3.10.0",
+    "sweetalert2": "^11.7.26",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@types/react-speech-recognition": "^3.9.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^9.1.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
